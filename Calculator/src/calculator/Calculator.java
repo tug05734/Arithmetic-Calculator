@@ -20,15 +20,16 @@ public class Calculator {
     static int number1, number2, operation;
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in); //Scanner to get user input
         while(stillRunning){
-            System.out.print("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nPlease input the number of the operation you would like to do: ");
+            System.out.print("\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nPlease input the number of the operation you would like to do: ");
             operation = in.nextInt();
             System.out.print("\nInput first number (Must be whole number): ");
             number1 = in.nextInt();
             System.out.print("\nInput second number (Must be whole number): ");
             number2 = in.nextInt();
             
+            //Switch case to process chosen operation
             switch (operation){
                 case 1:
                     System.out.println("\nAnswer: " + add(number1, number2));
@@ -53,6 +54,7 @@ public class Calculator {
         }    
     }
     
+    /* Methods to add, subtract, multiply, and divide and returns value*/
     static int add(int x, int y){
         return x + y;
     }
@@ -69,6 +71,7 @@ public class Calculator {
         return (double)x / y;
     }
     
+    //Method to ask user whether to continue or not
     static boolean advance(){
         System.out.print("\nWould you like to do another operation? (Y or N) ");
         Scanner in = new Scanner(System.in);
@@ -76,7 +79,7 @@ public class Calculator {
         if (answer.equalsIgnoreCase("Y")){
             return true;
         } else if (answer.equalsIgnoreCase("N")){
-            System.out.println("Program Terminated.");
+            System.out.println("\nProgram Terminated.");
             return false;
         } else { 
             System.out.println("\nIncorrect input, program terminated.");
