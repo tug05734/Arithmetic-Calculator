@@ -24,33 +24,37 @@ public class Calculator {
         while(stillRunning){
             System.out.print("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nPlease input the number of the operation you would like to do: ");
             operation = in.nextInt();
-            System.out.print("\nInput first number: ");
+            System.out.print("\nInput first number (Must be whole number): ");
             number1 = in.nextInt();
-            System.out.print("\nInput second number: ");
+            System.out.print("\nInput second number (Must be whole number): ");
             number2 = in.nextInt();
             
             switch (operation){
                 case 1:
-                    add(number1, number2);
+                    System.out.println("\nAnswer: " + add(number1, number2));
+                    stillRunning = advance();
                     break;
                 case 2: 
-                    subtract(number1, number2);
+                    System.out.println("\nAnswer: " + subtract(number1, number2));
+                    stillRunning = advance();
                     break;
                 case 3:
-                    multiply(number1, number2);
+                    System.out.println("\nAnswer: " + multiply(number1, number2));
+                    stillRunning = advance();
                     break;
                 case 4:
-                    divide(number1, number2);
+                    System.out.println("\nAnswer: " + divide(number1, number2));
+                    stillRunning = advance();
                     break;
                 default:
-                    System.out.println("\nIncorrect operation input");
+                    System.out.println("\nIncorrect operation input, program terminated.");
                     stillRunning = false;
             }
         }    
     }
     
-    private static int add(int x, int y){
-        return  x + y;
+    static int add(int x, int y){
+        return x + y;
     }
     
     final static int subtract(int x, int y){
@@ -62,8 +66,21 @@ public class Calculator {
     }
     
     static double divide(int x, int y){
-        return x / y;
+        return (double)x / y;
     }
     
-    
-}
+    static boolean advance(){
+        System.out.print("\nWould you like to do another operation? (Y or N) ");
+        Scanner in = new Scanner(System.in);
+        String answer = in.nextLine();
+        if (answer.equalsIgnoreCase("Y")){
+            return true;
+        } else if (answer.equalsIgnoreCase("N")){
+            System.out.println("Program Terminated.");
+            return false;
+        } else { 
+            System.out.println("\nIncorrect input, program terminated.");
+            return false;
+        }
+    }
+}    
